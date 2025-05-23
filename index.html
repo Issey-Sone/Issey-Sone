@@ -1,55 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://kit.fontawesome.com/693dd95c80.js" crossorigin="anonymous"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Issey Sone</title>
   <style>
+    @keyframes slideUpFade {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    }
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f4f4;
-      color: #111;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background-image: url('https://www.transparenttextures.com/patterns/connected.png');
-      background-size: cover;
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: #eff1f5; /* or your custom background */
+        color: #303446;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 0vh; /* Push content 10% from the top */
+        overflow-x: hidden;
+        position: relative;
     }
+
+    #particles-js {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh; /* instead of 100% */
+      z-index: -1;
+      background: #eff1f5;
+    }
+
     h1 {
-      font-size: 3rem;
+      font-size: 7rem;
+      margin-top: 0;
       margin-bottom: 30px;
+      font-weight: 500;
+      z-index: 1;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeIn 1.2s ease-in-out forwards;
+      animation-delay: 0.3s;
     }
+
     .links {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
+      z-index: 1;
     }
+
     .link-button {
-      background-color: #007bff;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 6px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideUpFade 0.8s ease-out forwards;
+      background-color: #f9e2af;
+      color: #303446;
+      padding: 8px 12px;
+      border-radius: 4px;
       text-decoration: none;
-      font-size: 1rem;
+      font-size: 1.7rem;
       transition: background 0.2s;
     }
+
     .link-button:hover {
-      background-color: #0056b3;
+        background-color: #eed49f;
+        }
+        html {
+        scroll-behavior: smooth;
+    }
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+    }
+    .about-section {
+        min-height: 100vh;
+        width: 100%;
+        padding: 100px 20px;
+        background: #f9e2af;
+        color: #303446;
+        text-align: center;
+    }
+
+    .about-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .about-section p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    .scroll-down {
+        position: absolute;
+        bottom: 50px; /* adjust height from bottom here */
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+        animation: bounce 2s infinite;
+    }
+
+    .scroll-down a {
+        color: #303446; /* change this to any color you'd like */
+        text-decoration: none;
+    }
+
+    .scroll-down a:hover {
+        color: #f9e2af; /* hover color */
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translate(-50%, 0); }
+        50% { transform: translate(-50%, 8px); }
     }
   </style>
 </head>
 <body>
-  <h1>Issey Sone</h1>
-  <div class="links">
-    <a class="link-button" href="https://github.com/YOUR_USERNAME">GitHub</a>
-    <a class="link-button" href="https://www.linkedin.com/in/YOUR_LINKEDIN">LinkedIn</a>
-    <a class="link-button" href="/projects.html">Projects</a>
-    <a class="link-button" href="/resume.pdf">Resume</a>
-    <a class="link-button" href="mailto:you@example.com">Email</a>
-  </div>
+  <div id="particles-js"></div>
+  <section class="hero">
+    <h1>Issey Sone</h1>
+    <div class="links">
+        <a class="link-button" href="https://github.com/YOUR_USERNAME" style="animation-delay: 0.2s">
+            <i class="fab fa-github"></i> GitHub
+        </a>
+
+        <a class="link-button" href="https://linkedin.com/in/YOUR_LINKEDIN" style="animation-delay: 0.4s">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+        </a>
+
+        <a class="link-button" href="/projects.html" style="animation-delay: 0.6s;">
+            <i class="fa solid fa-laptop-code"></i> Projects
+        </a>
+
+        <a class="link-button" href="/resume.pdf" style="animation-delay: 0.8s;">
+            <i class="fa-regular fa-file-pdf"></i> Resume
+        </a>
+
+        <a class="link-button" href="mailto:you@example.com" style="animation-delay: 1.0s;">
+            <i class="fa-solid fa-envelope"></i> Email
+        </a>
+    </div>
+    <div class="scroll-down">
+        <a id="scroll-link"><i class="fas fa-chevron-down fa-2x"></i></a>
+    </div>
+    
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+  <script>
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    window.onload = () => {
+        tsParticles.load("particles-js", {
+        fullScreen: { enable: false },
+        background: { color: "#eff1f5" },
+        particles: {
+            number: { value: 60 },
+            color: {
+            value: [
+                "#f2d5cf", "#eebebe", "#f4b8e4", "#ca9ee6", "#e78284",
+                "#ea999c", "#ef9f76", "#e5c890", "#a6d189", "#81c8be",
+                "#99d1db", "#85c1dc", "#8caaee", "#babbf1"
+            ]
+            },
+            shape: { type: "circle" },
+            opacity: { value: 0.7 },
+            size: { value: 3 },
+            move: {
+            enable: true,
+            speed: 0.7,
+            direction: "none",
+            random: true,
+            straight: false,
+            outModes: { default: "bounce" },
+            trail: {
+                enable: false,
+                length: 15,
+                fillColor: "#303446" // should match your background
+            }
+            },
+            shadow: {
+                enable: true,
+                color: "#f9e2af",  // white glow around each particle
+                blur: 9
+            },
+            collisions: {
+                enable: true,
+                mode: "bounce"
+                }
+        },
+        detectRetina: true
+        });
+  }
+  </script>
+  <section id="about" class="about-section">
+  <h2>About Me</h2>
+  <p>
+    I'm Issey, blah blah blah
+  </p>
+</section>
 </body>
 </html>
